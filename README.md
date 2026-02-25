@@ -25,6 +25,16 @@ This project was built with a focus on:
 - **Next.js API Routes** (Server-side logic & REST APIs)
 - **Prisma ORM** (Type-safe database queries)
 - **Neon PostgreSQL** (Serverless cloud database)
+- **Resend Email API** (Transactional email sending from server-side)
+
+### Resend Email Integration
+- Sends confirmation emails to users upon form submission
+- Uses a verified domain (or `onboarding@resend.dev` for testing)
+- Ensures emails are sent asynchronously without blocking database operations
+- Logs email send status for monitoring
+
+
+![Confirmation Email Screenshot](../zatlas/public/screenshots/emailscreenshort.PNG)
 
 ---
 
@@ -45,13 +55,17 @@ Atlas Solution follows a clean full-stack architecture using Next.js as both fro
 - Prisma-based database abstraction
 - Secure and scalable database communication
 
+
 This architecture ensures maintainability, scalability, and production readiness.
 
 ---
 
 # 🔐 Admin Dashboard (Custom API Implementation)
 
+
 The admin dashboard is powered by custom-built APIs using Next.js API routes.
+![Confirmation Email Screenshot](../zatlas/public/screenshots/dashboard.PNG)
+
 
 ### Backend Capabilities
 - Full CRUD operations
@@ -74,6 +88,12 @@ This demonstrates the ability to design and implement backend systems without re
 - Production deployment on Vercel with Neon DB
 
 ---
+
+# Database Neaon
+
+
+
+![Confirmation Email Screenshot](../zatlas/public/screenshots/database.PNG)
 
 # ⚙️ Local Development Setup
 

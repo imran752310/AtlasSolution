@@ -1,4 +1,3 @@
-// app/api/admin/session/route.ts
 import { NextResponse } from "next/server"
 import jwt from "jsonwebtoken"
 import { cookies } from "next/headers"

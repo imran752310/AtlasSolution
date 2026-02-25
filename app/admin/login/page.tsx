@@ -1,45 +1,47 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Lock, Mail, Eye, EyeOff, ArrowLeft, ShieldCheck } from "lucide-react"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Lock, Mail, Eye, EyeOff, ArrowLeft, ShieldCheck } from "lucide-react";
 
 export default function AdminLoginPage() {
-  const router = useRouter()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [showPassword, setShowPassword] = useState(false)
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setError("")
-    setLoading(true)
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
     try {
       const res = await fetch("/api/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
-      })
+      });
 
-      const data = await res.json()
-       console.log(data)
+      const data = await res.json();
+      console.log(data);
       if (res.ok) {
-        
-     router.push("/admin")
+        router.push("/admin");
       }
-
-
     } catch {
-      setError("Something went wrong. Please try again.")
-     
-    }finally {
-       setLoading(false)
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -80,7 +82,10 @@ export default function AdminLoginPage() {
               )}
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="text-sm font-medium text-foreground">
+                <label
+                  htmlFor="email"
+                  className="text-sm font-medium text-foreground"
+                >
                   Email
                 </label>
                 <div className="relative">
@@ -99,7 +104,10 @@ export default function AdminLoginPage() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="password" className="text-sm font-medium text-foreground">
+                <label
+                  htmlFor="password"
+                  className="text-sm font-medium text-foreground"
+                >
                   Password
                 </label>
                 <div className="relative">
@@ -118,7 +126,9 @@ export default function AdminLoginPage() {
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground"
-                    aria-label={showPassword ? "Hide password" : "Show password"}
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
                   >
                     {showPassword ? (
                       <EyeOff className="size-4" />
@@ -129,11 +139,7 @@ export default function AdminLoginPage() {
                 </div>
               </div>
 
-              <Button
-                type="submit"
-                disabled={loading}
-                className="mt-2 w-full"
-              >
+              <Button type="submit" disabled={loading} className="mt-2 w-full">
                 {loading ? (
                   <span className="flex items-center gap-2">
                     <span className="size-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" />
@@ -144,11 +150,9 @@ export default function AdminLoginPage() {
                 )}
               </Button>
             </form>
-
-           
           </CardContent>
         </Card>
       </div>
     </div>
-  )
+  );
 }

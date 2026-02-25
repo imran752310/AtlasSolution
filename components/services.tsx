@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Globe,
   ShoppingCart,
@@ -13,16 +13,16 @@ import {
   Clock,
   DollarSign,
   Sparkles,
-} from "lucide-react"
-import { motion } from "framer-motion"
+} from "lucide-react";
+import { motion } from "framer-motion";
 
 export interface Service {
-  id: string
-  name: string
-  description: string
-  basePrice: number
-  deliveryDays: number
-  icon: React.ReactNode
+  id: string;
+  name: string;
+  description: string;
+  basePrice: number;
+  deliveryDays: number;
+  icon: React.ReactNode;
 }
 
 export const services: Service[] = [
@@ -71,29 +71,29 @@ export const services: Service[] = [
     deliveryDays: 0,
     icon: <Wrench className="size-5" />,
   },
-]
+];
 
-const RECOMMENDED_THRESHOLD = 8000
+const RECOMMENDED_THRESHOLD = 8000;
 
 interface ServicesProps {
-  selected: string[]
-  onToggle: (id: string) => void
-  onOpenBuilder: () => void
+  selected: string[];
+  onToggle: (id: string) => void;
+  onOpenBuilder: () => void;
 }
 
 export function Services({ selected, onToggle, onOpenBuilder }: ServicesProps) {
   const totalPrice = services
     .filter((s) => selected.includes(s.id))
-    .reduce((sum, s) => sum + s.basePrice, 0)
+    .reduce((sum, s) => sum + s.basePrice, 0);
 
   const totalDays = Math.max(
     ...services
       .filter((s) => selected.includes(s.id))
       .map((s) => s.deliveryDays),
-    0
-  )
+    0,
+  );
 
-  const isRecommended = totalPrice >= RECOMMENDED_THRESHOLD
+  const isRecommended = totalPrice >= RECOMMENDED_THRESHOLD;
 
   return (
     <section id="services" className="relative px-6 py-24">
@@ -129,7 +129,7 @@ export function Services({ selected, onToggle, onOpenBuilder }: ServicesProps) {
           className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
           {services.map((service) => {
-            const isSelected = selected.includes(service.id)
+            const isSelected = selected.includes(service.id);
             return (
               <motion.button
                 key={service.id}
@@ -143,7 +143,7 @@ export function Services({ selected, onToggle, onOpenBuilder }: ServicesProps) {
                   "group relative flex flex-col items-start gap-4 rounded-xl border p-6 text-left transition-all duration-200",
                   isSelected
                     ? "border-primary bg-primary/5 ring-1 ring-primary"
-                    : "border-border bg-card hover:border-muted-foreground/30"
+                    : "border-border bg-card hover:border-muted-foreground/30",
                 )}
               >
                 {/* Selection indicator */}
@@ -152,7 +152,7 @@ export function Services({ selected, onToggle, onOpenBuilder }: ServicesProps) {
                     "absolute top-4 right-4 flex size-6 items-center justify-center rounded-full border transition-all",
                     isSelected
                       ? "border-primary bg-primary text-primary-foreground"
-                      : "border-border bg-secondary"
+                      : "border-border bg-secondary",
                   )}
                 >
                   {isSelected && <Check className="size-3.5" />}
@@ -163,7 +163,7 @@ export function Services({ selected, onToggle, onOpenBuilder }: ServicesProps) {
                     "flex size-10 items-center justify-center rounded-lg transition-colors",
                     isSelected
                       ? "bg-primary text-primary-foreground"
-                      : "bg-secondary text-muted-foreground"
+                      : "bg-secondary text-muted-foreground",
                   )}
                 >
                   {service.icon}
@@ -188,11 +188,13 @@ export function Services({ selected, onToggle, onOpenBuilder }: ServicesProps) {
                     </span>
                   )}
                   {service.deliveryDays === 0 && (
-                    <span className="text-xs text-muted-foreground">Monthly</span>
+                    <span className="text-xs text-muted-foreground">
+                      Monthly
+                    </span>
                   )}
                 </div>
               </motion.button>
-            )
+            );
           })}
         </motion.div>
 
@@ -226,7 +228,9 @@ export function Services({ selected, onToggle, onOpenBuilder }: ServicesProps) {
                       <Clock className="size-5" />
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground">Est. Delivery</p>
+                      <p className="text-xs text-muted-foreground">
+                        Est. Delivery
+                      </p>
                       <p className="font-[family-name:var(--font-heading)] text-2xl font-bold text-foreground">
                         ~{totalDays} days
                       </p>
@@ -250,5 +254,5 @@ export function Services({ selected, onToggle, onOpenBuilder }: ServicesProps) {
         )}
       </div>
     </section>
-  )
+  );
 }
