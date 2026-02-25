@@ -34,7 +34,7 @@ This project was built with a focus on:
 - Logs email send status for monitoring
 
 
-![Confirmation Email Screenshot](../zatlas/public/screenshots/emailscreenshort.PNG)
+![Confirmation Email Screenshot](public/screenshots/emailscreenshort.PNG)
 
 ---
 
@@ -64,7 +64,8 @@ This architecture ensures maintainability, scalability, and production readiness
 
 
 The admin dashboard is powered by custom-built APIs using Next.js API routes.
-![Confirmation Email Screenshot](../zatlas/public/screenshots/dashboard.PNG)
+
+![Confirmation Email Screenshot](public/screenshots/dashboard.PNG)
 
 
 ### Backend Capabilities
@@ -93,7 +94,7 @@ This demonstrates the ability to design and implement backend systems without re
 
 
 
-![Confirmation Email Screenshot](../zatlas/public/screenshots/database.PNG)
+![Confirmation Email Screenshot](public/screenshots/database.PNG)
 
 # ⚙️ Local Development Setup
 
